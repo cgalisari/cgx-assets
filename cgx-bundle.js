@@ -594,7 +594,7 @@ window.__cgxFx=true;
    Never pins .gallery (parallax-only). Desktop drift >= 768px.
    ========================================================================== */
 (function () {
-  const cards = $$('.gallery-card');
+  const cards = $('.gallery-card, .cgx-gcard');
   if (!cards || !cards.length) return;
   if (REDUCE) {
     cards.forEach((c) => { if (c) gsap.set(c, { rotation: 0, y: 0, clearProps: 'transform' }); });
@@ -606,7 +606,7 @@ window.__cgxFx=true;
     const tweens = [];
     cards.forEach((card) => {
       if (!card) return;
-      const gallery = card.closest('.gallery');
+      const gallery = card.closest('.gallery') || card.closest('.cgx-gallery-track');
       if (!gallery) return;
       const startRot = parseFloat(card.dataset.rot || '0') || 0;
       const speed = parseFloat(card.dataset.speed || '1') || 1;
